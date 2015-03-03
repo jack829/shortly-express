@@ -36,13 +36,16 @@ function(req, res) {
 app.get('/links', 
 function(req, res) {
   Links.reset().fetch().then(function(links) {
+    // res.request.href = ??;
     res.send(200, links.models);
   });
 });
 
+
 app.post('/links', 
 function(req, res) {
   var uri = req.body.url;
+  console.log("URI " + uri)
 
   if (!util.isValidUrl(uri)) {
     console.log('Not a valid url: ', uri);
